@@ -6,6 +6,17 @@ class MyButton extends StatefulWidget{
 }
 
 class _MyButtonState extends State<MyButton>{
+  String flutterText = "";
+  int index = 0;
+  List<String> collections = ['Flutter', 'es','genial'];
+  
+  void onPressButton(){
+    setState(() {
+      flutterText = collections[index];
+      index = index <2 ? index +1: 0;
+    });
+  }
+
   @override
   Widget build(BuildContext context){
     return Scaffold(
@@ -20,7 +31,7 @@ class _MyButtonState extends State<MyButton>{
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Text(
-                    "Felix",
+                    flutterText,
                     style: TextStyle(
                       fontSize: 40.0
                     ),
@@ -31,7 +42,7 @@ class _MyButtonState extends State<MyButton>{
                 RaisedButton(
                   child: Text("Actualizar", style: TextStyle(color: Colors.white),),
                   color: Colors.blueAccent,
-                  onPressed: () {},
+                  onPressed: onPressButton
                 ),
               ],
             )
